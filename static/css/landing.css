@@ -1,0 +1,8 @@
+ul li a {
+    color: black; /* ou a cor que você deseja usar para os links */
+    text-decoration: none; /* Para remover o sublinhado dos links */
+  }
+
+  ul {
+    list-style: none;
+  }

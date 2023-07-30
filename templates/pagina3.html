@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Página 3</title>
+    <link rel="stylesheet" href="/static/css/landing.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="/">p1</a>
+        <a href="/pagina2">p2</a>
+        <a href="/pagina3">p3
+        </a>
+    </nav>
+
+    <h1>=== Página 3 ===</h1>
+    <ul>
+        {% for item in lista_de_itens %}
+        <li><a href="{{ url_for('item_details', item=item) }}">{{ item }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

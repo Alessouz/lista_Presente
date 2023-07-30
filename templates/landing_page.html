@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="/static/css/landing.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="/">p1</a>
+        <a href="/pagina2">p2</a>
+        <a href="/pagina3">p3
+        </a>
+    </nav>
+
+    <h1>Bem-vindo à nossa Landing Page!</h1>
+    <p>Aqui está a lista de itens:</p>
+    <div>
+        <h1>=== Página 1 ===</h1>
+        <ul>
+            {% for item in lista_de_itens %}
+            <li><a href="{{ url_for('item_details', item=item) }}">{{ item }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>

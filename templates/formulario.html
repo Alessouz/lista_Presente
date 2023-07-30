@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Formulário</title>
+</head>
+
+<body>
+    <h1>{{ item }}</h1>
+    <p>Digite seu nome para que os noivos saibam quem escolheu</p>
+    <form method="post" action="/enviar_email">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br>
+        <input type="hidden" name="item_escolhido" value="{{ item }}">
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+
+</html>
+
