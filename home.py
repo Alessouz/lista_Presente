@@ -3,12 +3,17 @@ import smtplib
 import email.message
 from jinja2 import Environment, FileSystemLoader
 import json
+import os
 
 # Função para carregar os dados do arquivo JSON
 def load_data():
     try:
         with open('data.json', 'r') as f:
-            return json.load(f)
+            # Verifica se o arquivo está vazio
+            if os.stat('data.json').st_size == 0:
+                return {}
+            else:
+                return json.load(f)
     except FileNotFoundError:
         return {}
 
@@ -189,4 +194,3 @@ def enviar_formulario():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
