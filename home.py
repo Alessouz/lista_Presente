@@ -2,6 +2,20 @@ from flask import Flask, render_template, request
 import smtplib
 import email.message
 from jinja2 import Environment, FileSystemLoader
+import json
+
+# Função para carregar os dados do arquivo JSON
+def load_data():
+    try:
+        with open('data.json', 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
+# Função para salvar os dados no arquivo JSON
+def save_data(data):
+    with open('data.json', 'w') as f:
+        json.dump(data, f)
 
 app = Flask(__name__)
 
@@ -149,6 +163,18 @@ def enviar_formulario():
     if request.method == 'POST':
         nome = request.form['nome']
         item_escolhido = request.form['item_escolhido']
+
+        # Carrega os dados do arquivo JSON
+        data = load_data()
+
+        # Verifica se o item já foi escolhido
+        if item_escolhido in data.values():
+            return render_template('erro.html', item=item_escolhido)
+
+        # Adiciona as informações no arquivo JSON
+        data[nome] = item_escolhido
+        save_data(data)
+
         mensagem = f"""
         <p>Olá, Alessandro !</p>
         <p>{nome}, escolheu o item: {item_escolhido}</p>
@@ -159,6 +185,7 @@ def enviar_formulario():
 
         enviar_email(mensagem, email_destino)  # Passa a mensagem e o endereço de e-mail de destino como argumentos
         return render_template('sucesso.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -8,19 +8,25 @@
 
 <body>
 
-    <nav>
-        <a href="/">p1</a>
-        <a href="/pagina2">p2</a>
-        <a href="/pagina3">p3
-        </a>
-    </nav>
-
     <h1>=== Página 2 ===</h1>
     <ul>
         {% for item in lista_de_itens %}
         <li><a href="{{ url_for('item_details', item=item) }}">{{ item }}</a></li>
         {% endfor %}
     </ul>
+    
+    <button>
+        <a href="/">pagina1</a>
+    </button>
+
+    <button>
+        <a href="/pagina2">p2</a>
+    </button>
+
+    <button>
+        <a href="/pagina3">p3</a>
+    </button>
+
 </body>
 
 </html>
