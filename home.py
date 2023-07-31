@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request
 import smtplib
 import email.message
-from jinja2 import Environment, FileSystemLoader
 import json
 import os
+
+app = Flask(__name__)
 
 # Função para carregar os dados do arquivo JSON
 def load_data():
@@ -22,11 +23,9 @@ def save_data(data):
     with open('data.json', 'w') as f:
         json.dump(data, f)
 
-app = Flask(__name__)
-
 # Lista de itens
-
 lista_de_itens = [
+    
 'CAFETEIRA',
 'SANDUICHEIRA',
 'LIQUIDIFICADOR',
@@ -119,49 +118,24 @@ lista_de_itens = [
 'DESCANSO DE PANELA + TAPETE ANTIADERENTE PARA BOX',
 ]
 
-def enviar_email(mensagem, destinatario):
-    msg = email.message.Message()
-    msg['Subject'] = "Escolheram um item na lista do chá "
-    msg['From'] = 'filho.pantaleao@gmail.com'
-    msg['To'] = destinatario
-    password = 'bgcnbtygirlzgmjs' 
-    msg.add_header('Content-Type', 'text/html')
-    msg.set_payload(mensagem)
-
-    s = smtplib.SMTP('smtp.gmail.com:587')
-    s.starttls()
-    # Login Credentials for sending the mail
-    s.login(msg['From'], password)
-    s.sendmail(msg['From'], [msg['To']], msg.as_string().encode('utf-8'))
-    print('Email enviado')
-    s.quit()
-
-
-def chunk_list(lst, chunk_size):
-    """Divide uma lista em pedaços do tamanho especificado."""
-    return [lst[i:i + chunk_size] for i in range(0, len(lst), chunk_size)]
-
-env = Environment(loader=FileSystemLoader('.'))
-template = env.get_template('/templates/landing_page.html')
-
-itens_por_pagina = len(lista_de_itens) // 3  # Divide a lista em 3 partes aproximadamente iguais
-lista_dividida = chunk_list(lista_de_itens, itens_por_pagina)
+# Carregar os dados do arquivo JSON
+itens_selecionados = list(load_data().values())
 
 @app.route('/')
 def landing_page():
-    return render_template('landing_page.html', lista_de_itens=lista_dividida[0])
+    return render_template('landing_page.html', lista_de_itens=lista_de_itens)
 
 @app.route('/pagina2')
 def pagina2():
-    return render_template('pagina2.html', lista_de_itens=lista_dividida[1])
+    return render_template('pagina2.html', lista_de_itens=lista_de_itens)
 
 @app.route('/pagina3')
 def pagina3():
-    return render_template('pagina3.html', lista_de_itens=lista_dividida[2])
+    return render_template('pagina3.html', lista_de_itens=lista_de_itens)
 
 @app.route('/item/<item>')
 def item_details(item):
-    return render_template('formulario.html', item=item)
+    return render_template('formulario.html', item=item, selecionado=item in itens_selecionados)
 
 @app.route('/enviar_email', methods=['POST'])
 def enviar_formulario():
@@ -169,14 +143,19 @@ def enviar_formulario():
         nome = request.form['nome']
         item_escolhido = request.form['item_escolhido']
 
-        # Carrega os dados do arquivo JSON
-        data = load_data()
+        # Verifica se o item já foi selecionado
+        if item_escolhido in itens_selecionados:
+            return f"O item '{item_escolhido}' já foi selecionado."
 
-        # Verifica se o item já foi escolhido
-        if item_escolhido in data.values():
+        # Verifica se o item já foi selecionado
+        if item_escolhido in itens_selecionados:
             return render_template('erro.html', item=item_escolhido)
 
-        # Adiciona as informações no arquivo JSON
+        # Adiciona o item à lista de itens selecionados
+        itens_selecionados.append(item_escolhido)
+
+        # Salva os dados no arquivo JSON
+        data = load_data()
         data[nome] = item_escolhido
         save_data(data)
 
@@ -190,7 +169,6 @@ def enviar_formulario():
 
         enviar_email(mensagem, email_destino)  # Passa a mensagem e o endereço de e-mail de destino como argumentos
         return render_template('sucesso.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)
