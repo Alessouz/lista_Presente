@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Erro</title>
+    <style>
+        /* Estilo para o item selecionado */
+        .item-selecionado {
+            background-color: yellow;
+        }
+        /* Estilo para a mensagem de erro */
+        .mensagem-erro {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Erro</h1>
+    <p class="mensagem-erro">Este item já foi escolhido. Por favor, selecione outro item.</p>
+    <a href="/">Voltar</a>
+
+    <script>
+        // Obtém o valor do item_escolhido enviado para o template
+        var itemEscolhido = "{{ item }}";
+        
+        // Adiciona a classe CSS "item-selecionado" ao item selecionado
+        window.addEventListener('DOMContentLoaded', function() {
+            var item = document.querySelector("input[value='" + itemEscolhido + "']");
+            item.classList.add("item-selecionado");
+        });
+    </script>
+</body>
+</html>
