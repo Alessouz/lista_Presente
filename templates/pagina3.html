@@ -2,31 +2,41 @@
 <html>
 
 <head>
-    <title>Página 3</title>
-    <link rel="stylesheet" href="/static/css/landing.css">
+  <title>Lista de Presente</title>
+  <link rel="stylesheet" href="/static/css/btn.css">
+  <link rel="stylesheet" href="/static/css/landing.css">
+  <link rel="stylesheet" href="/static/css/home.css">
 </head>
 
-<body>
+<div class="container">
 
-    <h1>=== Página 3 ===</h1>
+  <body>
+
+    <div class="circle-container">
+      <div class="circle"></div>
+      <div class="circle2"></div>
+      <div class="message">Inspirações<br>Paletas de Cores</div>
+      <div class="circle3"></div>
+      <div class="circle4"></div>
+    </div>
+
+    {% block content %}
     <ul>
-        {% for item in lista_de_itens %}
-        <li><a href="{{ url_for('item_details', item=item) }}">{{ item }}</a></li>
-        {% endfor %}
+      {% for item in lista_de_itens %}
+      {% if item in itens_escolhidos %}
+      <li class="escolhido">{{ item }}</li>
+      {% else %}
+      <li><a href="{{ url_for('item_details', item=item) }}">{{ item }}</a></li>
+      {% endif %}
+      {% endfor %}
     </ul>
+    {% endblock %}
 
-    <button>
-        <a href="/">pagina1</a>
-    </button>
+    <div>
+      <a class="link" href="/pagina2"><button class="btn">&#8592; Página Anterior</button></a>
+    </div>
 
-    <button>
-        <a href="/pagina2">pagina2</a>
-    </button>
-
-    <button>
-        <a href="/pagina3">pagina3</a>
-    </button>
-
-</body>
+  </body>
+</div>
 
 </html>

@@ -7,21 +7,41 @@
 
 <body>
 
-    <div>
-        <div>
-            <h1>Item Detalhes</h1>
-            <!-- Adicione aqui outros detalhes específicos do item, se desejar -->
-            <form method="post" action="/enviar_email">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required><br>
+    <!DOCTYPE html>
+    <html>
+    
+    <head>
+        <title>Formulário</title>
+    </head>
+    
+    <body>
+        <h1>{{ item }}</h1>
+        <p>Digite seu nome para que os noivos saibam quem escolheu</p>
+        
+        {% block content %}
+        <form action="/enviar_email" method="post">
+          <input type="hidden" name="nome" value="Alessandro">
+          <select name="item_escolhido">
+            {% for item in lista_de_itens %}
+              {% if item in itens_escolhidos %}
+                <option class="escolhido" value="{{ item }}">{{ item }}</option>
+              {% else %}
+                <option value="{{ item }}">{{ item }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+          <button type="submit">Enviar</button>
+        </form>
+      {% endblock %}
+        <br>
+        <a href="{{ request.referrer }}"><button>Voltar</button></a>
+        
+    </body>
+    
+    </html>
+    
+    
 
-                <input type="submit" value="Enviar">
-            </form>
-        </div>
-    </div>
 </body>
 
 </html>
-
-
-

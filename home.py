@@ -119,6 +119,18 @@ lista_de_itens = [
 'DESCANSO DE PANELA + TAPETE ANTIADERENTE PARA BOX',
 ]
 
+# Novos itens a serem adicionados
+# Adicione mais novos itens aqui
+
+novos_itens = [
+    'ESCOVA ROLO DE ADESIVO + 2 SACOLAS RECICLÁVEIS', 
+    'ESCOVA DE LAVAR ROUPAS + UMIDIFICADOR',
+    'ITEM 3'
+    ]
+
+# Adicione os novos itens à lista existente
+lista_de_itens.extend(novos_itens)
+
 def enviar_email(mensagem, destinatario):
     msg = email.message.Message()
     msg['Subject'] = "Escolheram um item na lista do chá "
@@ -144,12 +156,17 @@ def chunk_list(lst, chunk_size):
 env = Environment(loader=FileSystemLoader('.'))
 template = env.get_template('/templates/landing_page.html')
 
-itens_por_pagina = len(lista_de_itens) // 3  # Divide a lista em 3 partes aproximadamente iguais
+itens_por_pagina = len(lista_de_itens) // 3
 lista_dividida = chunk_list(lista_de_itens, itens_por_pagina)
 
 @app.route('/')
 def landing_page():
-    return render_template('landing_page.html', lista_de_itens=lista_dividida[0])
+    # Carrega os dados do arquivo JSON
+    data = load_data()
+    itens_escolhidos = list(data.values())
+    
+    return render_template('landing_page.html', lista_de_itens=lista_dividida[0], itens_escolhidos=itens_escolhidos)
+
 
 @app.route('/pagina2')
 def pagina2():
