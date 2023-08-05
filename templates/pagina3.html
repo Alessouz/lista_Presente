@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>Lista de Presente</title>
-  <link rel="stylesheet" href="/static/css/btn.css">
-  <link rel="stylesheet" href="/static/css/landing.css">
-  <link rel="stylesheet" href="/static/css/home.css">
-</head>
-
 <div class="container">
+
+  <img src="{{ url_for('servir_imagens', filename='Capturar.PNG') }}" alt="Minha Imagem">
+
+  <head>
+    <title>Lista de Presente</title>
+    <link rel="stylesheet" href="/static/css/btn.css">
+    <link rel="stylesheet" href="/static/css/landing.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+
+    <style>
+      .img_ {
+        text-align: center;
+        position: relative;
+      }
+
+      .img_ img {
+        max-width: 100px;
+        height: auto;
+        position: absolute;
+        top: 40%;
+        left: 95%;
+        transform: translate(-50%, -50%);
+        margin-top: 150px;
+      }
+
+      @media (min-width: 601px) {
+        .img_ {
+          display: none;
+        }
+      }
+    </style>
+
+  </head>
 
   <body>
 
@@ -18,6 +44,22 @@
       <div class="message">Inspirações<br>Paletas de Cores</div>
       <div class="circle3"></div>
       <div class="circle4"></div>
+    </div>
+
+    <script>
+      // Obtém o valor do nome do item escolhido enviado para o template
+      var itemNomeEscolhido = "{{ item_nome_escolhido }}";
+      // Adiciona a classe CSS "escolhido" ao item selecionado
+      window.addEventListener('DOMContentLoaded', function () {
+        var item = document.querySelector("li[data-item-nome='" + itemNomeEscolhido + "']");
+        if (item) {
+          item.classList.add("escolhido");
+        }
+      });
+    </script>
+
+    <div class="img_">
+      <img src="{{ url_for('servir_imagens', filename='flores_.PNG') }}" alt="Minha Imagem">
     </div>
 
     {% block content %}
@@ -32,9 +74,14 @@
     </ul>
     {% endblock %}
 
-    <div>
-      <a class="link" href="/pagina2"><button class="btn">&#8592; Página Anterior</button></a>
+    <div class="btn-container">
+      <a class="link" href="/"><button class="btn">&#8592; Página Anterior</button></a>
+      <a class="link" href="/pagina3"><button class="btn">Proxima Pagina &#8594;</button></a>
     </div>
+
+    <div class="flor_"><img src="{{ url_for('servir_imagens', filename='flor.PNG') }}" alt="Minha Imagem"></div>
+    <div class="flor_2"><img src="{{ url_for('servir_imagens', filename='flor2.PNG') }}" alt="Minha Imagem"></div>
+
 
   </body>
 </div>

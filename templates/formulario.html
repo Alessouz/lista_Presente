@@ -3,24 +3,46 @@
 
 <head>
     <title>Formulário</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <style>
+
+    </style>
 </head>
 
 <body>
-    <h1>{{ item }}</h1>
-    <p>Digite seu nome para que os noivos saibam quem escolheu</p>
-    <form method="post" action="/enviar_email">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required><br>
-        <input type="hidden" name="item_escolhido" value="{{ item }}">
-        <input type="submit" value="Enviar">
-    </form>
+
+    <div class="container">
+        <h1>{{ item }}</h1>
+        <p>Digite seu nome para que os noivos saibam quem escolheu</p>
+        <form method="post" action="/enviar_email">
+            <input type="text" id="nome" name="nome" required><br>
+            <input type="hidden" name="item_escolhido" value="{{ item }}">
+            <br>
+            <input class="btn" type="submit" value="Enviar">
+        </form>
+        <script>
+            // Script para adicionar e remover a classe 'input-com-valor'
+            const inputNome = document.getElementById('nome');
+            function atualizarPlaceholder() {
+                if (inputNome.value) {
+                    inputNome.classList.add('input-com-valor');
+                } else {
+                    inputNome.classList.remove('input-com-valor');
+                }
+            }
+            inputNome.addEventListener('input', atualizarPlaceholder);
+            inputNome.addEventListener('blur', atualizarPlaceholder);
+        </script>
+
+        <br>
+        <a href="{{ request.referrer }}"><button class="btn_">Voltar</button></a>
+    </div>
+
+    <div class="flor"><img src="{{ url_for('servir_imagens', filename='flor.PNG') }}" alt="Minha Imagem"></div>
+    <div class="flor2"><img src="{{ url_for('servir_imagens', filename='flor2.PNG') }}" alt="Minha Imagem"></div>
 
 
-    
-    <br>
-    <a href="{{ request.referrer }}"><button>Voltar</button></a>
-    
 </body>
 
 </html>
-

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 import smtplib
 import email.message
 from jinja2 import Environment, FileSystemLoader
@@ -42,7 +42,7 @@ lista_de_itens = [
 'PIPOQUEIRA',
 'VARAL DE CHÃO',
 'FERRO DE PASSAR ROUPA',
-'TÁBUA DE PASSAR ROUPA',
+'TÁBUA DE PASSAR ROUPA.',
 'TAPETE DE SALA',
 'SAPATEIRA',
 'ESPELHO DE CORPO',
@@ -50,23 +50,23 @@ lista_de_itens = [
 'JOGO DE LENÇOL C/ ELÁSTICO (QUEEN)',
 'JOGO DE LENÇOL C/ ELÁSTICO (QUEEN)',
 'JOGO DE LENÇOL C/ ELÁSTICO (QUEEN)',
-'JOGO DE LENÇOL C/ ELÁSTICO (QUEEN)',
+'JOGO DE LENÇOL COM ELÁSTICO (QUEEN)',
 'EDREDOM DE CASAL',
 'EDREDOM DE CASAL',
 'DREDOM DE CASAL',
 'MANTA DE CASAL + ALMOFADA',
-'MANTA DE CASAL + ALMOFADA',
-'MANTA DE CASAL + ALMOFADA',
+'MANTA DE CASAL + ALMOFADA.',
+'MANTA DE CASAL + ALMOFADA..',
 'TOALHA DE CORPO + PORTA RETRATO',
-'TOALHA DE CORPO + PORTA RETRATO',
+'TOALHA DE CORPO + PORTA RETRATO.',
 'TOALHA DE CORPO + TOALHA DE ROSTO',
-'TOALHA DE CORPO + TOALHA DE ROSTO',
+'TOALHA DE CORPO + TOALHA DE ROSTO.',
 'PREGADOR +CESTO DE ROUPA G',
 'PREGADOR +FRIGIDEIRA ANTIADERENTE',
 'PREGADOR + LIXEIRA DE PIA',
 'PANO DE PRATO + PORTA TEMPERO',
 'PANO DE PRATO + KIT POTES HERMÉTICOS',
-'PANO DE PRATO + KIT POTES HERMÉTICOS',
+'PANO DE PRATO + KIT POTES HERMÉTICOS.',
 'PANO DE PRATO + CUSCUZEIRA',
 'PANO DE PRATO + JOGO DE XÍCARAS',
 'PANO DE PRATO + COLHER DE SILICONE',
@@ -100,8 +100,8 @@ lista_de_itens = [
 'CABIDES DE MADEIRA + VASSOURA DE PELO',
 'CABIDES DE MADEIRA + RODO',
 'KIT PANO DE CHÃO + JOGO DE TAPETES DE COZINHA',
-'KIT PANO DE CHÃO + JOGO DE TAPETES DE COZINHA',
-'KIT PANO DE CHÃO + JOGO DE TAPETES DE COZINHA',
+'KIT PANO DE CHÃO + JOGO DE TAPETES DE COZINHA.',
+'KIT PANO DE CHÃO + JOGO DE TAPETES DE COZINHA..',
 'KIT PANO DE CHÃO + MOBI',
 'KIT PANO DE CHÃO + JOGO DE FLANELAS',
 'VASSOURA DE PELO + PÁ',
@@ -167,14 +167,22 @@ def landing_page():
     
     return render_template('landing_page.html', lista_de_itens=lista_dividida[0], itens_escolhidos=itens_escolhidos)
 
+# Rota para servir as imagens estáticas
+@app.route('/imagens/<path:filename>')
+def servir_imagens(filename):
+    return send_from_directory('imagens', filename)
 
 @app.route('/pagina2')
 def pagina2():
-    return render_template('pagina2.html', lista_de_itens=lista_dividida[1])
+    data = load_data()
+    itens_escolhidos = list(data.values())
+    return render_template('pagina2.html', lista_de_itens=lista_dividida[1], itens_escolhidos=itens_escolhidos)
 
 @app.route('/pagina3')
 def pagina3():
-    return render_template('pagina3.html', lista_de_itens=lista_dividida[2])
+    data = load_data()
+    itens_escolhidos = list(data.values())
+    return render_template('pagina3.html', lista_de_itens=lista_dividida[2], itens_escolhidos=itens_escolhidos)
 
 @app.route('/item/<item>')
 def item_details(item):

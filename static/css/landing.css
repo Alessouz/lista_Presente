@@ -1,161 +1,163 @@
 ul li a {
-    color: black; /* ou a cor que você deseja usar para os links */
-    text-decoration: none; /* Para remover o sublinhado dos links */
-    font-family: 'Playfair Display', serif;
-  }
+  color: black; /* ou a cor que você deseja usar para os links */
+  text-decoration: none; /* Para remover o sublinhado dos links */
+  font-family: 'Playfair Display', serif;
+}
 
 ul li a:hover{
- color: blue;
+color: blue;
 }
 
 ul {
-  list-style-type: none;
-  padding-left: 0;
+list-style-type: none;
+padding-left: 0;
 }
 
 .message {
-  text-align: center;
-  font-size: 24px;
-  align-self: center;
-  margin: 20px;
+text-align: center;
+font-size: 24px;
+align-self: center;
+margin: 20px;
 }
 
 .message span.inspiracoes {
-  font-size: 32px;
+font-size: 32px;
 }
 
 .message span.paletas {
-  font-size: 16px;
+font-size: 16px;
 }
 
 .circle-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap; /* Quebra para a próxima linha se o espaço for insuficiente */
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap; /* Quebra para a próxima linha se o espaço for insuficiente */
 }
 
-  .circle{
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: #000000;
-    display: inline-block;
-    transition: all 0.2s ease;
-    margin: 5px;
+.circle{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #000000;
+  display: inline-block;
+  transition: all 0.2s ease;
+  margin: 5px;
 }
 
 .circle2 {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%; 
-  background-color: #545454;
-  display: inline-block;
-  transition: all 0.2s ease;
-  margin: 5px;
+width: 70px;
+height: 70px;
+border-radius: 50%; 
+background-color: #545454;
+display: inline-block;
+transition: all 0.2s ease;
+margin: 5px;
 }
 
 .circle3 {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background-color: #76736D;
-  display: inline-block;
-  transition: all 0.2s ease;
-  margin: 5px;
+width: 70px;
+height: 70px;
+border-radius: 50%;
+background-color: #76736D;
+display: inline-block;
+transition: all 0.2s ease;
+margin: 5px;
 }
 
 .circle4 {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background-color: #D9D9D9;
-  display: inline-block;
-  transition: all 0.2s ease;
-  margin: 5px;
+width: 70px;
+height: 70px;
+border-radius: 50%;
+background-color: #D9D9D9;
+display: inline-block;
+transition: all 0.2s ease;
+margin: 5px;
 }
 
 .circle:hover,
 .circle2:hover,
 .circle3:hover,
 .circle4:hover {
-  width: 90px;
-  height: 90px;
-  margin: 10px;
+width: 90px;
+height: 90px;
+margin: 10px;
 }
 
 .circle:hover::before {
-  content: "Preto - #000000";
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  background-color: #000000;
-  color: #fff;
-  font-size: 14px;
-  border-radius: 5px;
+content: "Preto - #000000";
+position: absolute;
+top: 15%;
+left: 50%;
+transform: translate(-50%, -50%);
+padding: 10px;
+background-color: #000000;
+color: #fff;
+font-size: 14px;
+border-radius: 5px;
 }
 
 .circle2:hover::before {
-  content: "cinza escuro - #545454";
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  background-color: #545454;
-  color: #fff;
-  font-size: 14px;
-  border-radius: 5px;
+content: "cinza escuro - #545454";
+position: absolute;
+top: 15%;
+left: 50%;
+transform: translate(-50%, -50%);
+padding: 10px;
+background-color: #545454;
+color: #fff;
+font-size: 14px;
+border-radius: 5px;
 }
 
 .circle3:hover::before {
-  content: "Cinza Escuro Neutro - #76736D";
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  background-color: #76736D;
-  color: #fff;
-  font-size: 14px;
-  border-radius: 5px;
+content: "Cinza Escuro Neutro - #76736D";
+position: absolute;
+top: 15%;
+left: 50%;
+transform: translate(-50%, -50%);
+padding: 10px;
+background-color: #76736D;
+color: #fff;
+font-size: 14px;
+border-radius: 5px;
 }
 
 .circle4:hover::before {
-  content: "cinza claro - #D9D9D9";
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  background-color: #D9D9D9;
-  color: #000;
-  font-size: 14px;
-  border-radius: 5px;
+content: "cinza claro - #D9D9D9";
+position: absolute;
+top: 15%;
+left: 50%;
+transform: translate(-50%, -50%);
+padding: 10px;
+background-color: #D9D9D9;
+color: #000;
+font-size: 14px;
+border-radius: 5px;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #76736D;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+margin: 0;
+background-color: #76736D;
 }
 
 .container {
-  padding: 10px 20px; /* Reduz o padding vertical */
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  max-width: 600px;
-  margin-top: 50px; /* Adiciona um espaço na parte superior */
-  position: relative; /* Permite posicionar elementos filhos com posição absoluta */
+padding: 10px 20px; /* Reduz o padding vertical */
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+background-color: #fff;
+max-width: 600px;
+margin-top: 50px;
+position: absolute;
+top: 5px;
 }
 
 h1 {
-  text-align: center;
+text-align: center;
 }
-  
+
+
