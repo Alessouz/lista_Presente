@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html>
 
-<div class="container">
+<head>
+  <title>Lista de Presente</title>
+  <link rel="stylesheet" href="/static/css/btn.css">
+  <link rel="stylesheet" href="/static/css/landing.css">
+  <link rel="stylesheet" href="/static/css/home.css">
 
-  <img src="{{ url_for('servir_imagens', filename='Capturar.PNG') }}" alt="Minha Imagem">
+  <style>
+    .img_ {
+      text-align: center;
+      position: relative;
+    }
 
-  <head>
-    <title>Lista de Presente</title>
-    <link rel="stylesheet" href="/static/css/btn.css">
-    <link rel="stylesheet" href="/static/css/landing.css">
-    <link rel="stylesheet" href="/static/css/home.css">
+    .img_ img {
+      max-width: 100px;
+      height: auto;
+      position: absolute;
+      top: 40%;
+      left: 95%;
+      transform: translate(-50%, -50%);
+      margin-top: 150px;
+    }
 
-    <style>
+    @media (min-width: 601px) {
       .img_ {
-        text-align: center;
-        position: relative;
+        display: none;
       }
+    }
+  </style>
 
-      .img_ img {
-        max-width: 100px;
-        height: auto;
-        position: absolute;
-        top: 40%;
-        left: 95%;
-        transform: translate(-50%, -50%);
-        margin-top: 150px;
-      }
-
-      @media (min-width: 601px) {
-        .img_ {
-          display: none;
-        }
-      }
-    </style>
-
-  </head>
+</head>
 
   <body>
+
+    <div class="container">
+
+     <div class="img">
+        <img src="{{ url_for('servir_imagens', filename='Capturar.PNG') }}" alt="Minha Imagem">
+    </div> 
 
     <div class="circle-container">
       <div class="circle"></div>

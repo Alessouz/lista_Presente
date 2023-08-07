@@ -1,67 +1,75 @@
 .escolhido {
-  color: red;
-  font-weight: bold;
-}
-
-@media (max-width: 600px) {
-  .container {
-      max-width: 90%;
+    color: red;
+    font-weight: bold;
   }
-
-  .circle-container {
-      text-align: center;
-
-  }
-
-  .message {
-      text-align: center;
-      font-size: 14px;
-      align-self: center;
-      margin: 10px;
-  }
-
-  .message span.inspiracoes {
-      font-size: 14px;
-  }
-
-  .message span.paletas {
-      font-size: 10px;
-  }
-
-  .circle,
-  .circle2,
-  .circle3,
-  .circle4 {
-      width: 50px;
-      height: 50px;
-      margin: 5px;
-
-  }
-
-  .circle:hover,
-  .circle2:hover,
-  .circle3:hover,
-  .circle4:hover {
-      width: 70px;
-      height: 70px;
-      margin: 10px;
-  }
-
-  .move {
-      text-align: center;
-  }
-
-  .flor,
-  .flor2 {
+  
+  @media (max-width: 600px) {
+    .container {
+        max-width: 90%;
+    }
+  
+    .circle-container {
+        text-align: center;
+  
+    }
+  
+    .message {
+        text-align: center;
+        font-size: 14px;
+        align-self: center;
+        margin: 10px;
+    }
+  
+    .message span.inspiracoes {
+        font-size: 14px;
+    }
+  
+    .message span.paletas {
+        font-size: 10px;
+    }
+  
+    .circle,
+    .circle2,
+    .circle3,
+    .circle4 {
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+  
+    }
+  
+    .circle:hover,
+    .circle2:hover,
+    .circle3:hover,
+    .circle4:hover {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
+  
+    .move {
+        text-align: center;
+    }
+  
+    .flor,
+    .flor2 {
+        display: none;
+    }
+    
+    .flor_2 {
       display: none;
+    }
+  
+    .flor_ {
+      display: none;
+    }
+  
+    .img img {
+        width: 100%;
+        /* Define a largura da imagem para ocupar 100% da largura do contêiner */
+        height: auto;
+        /* Define a altura da imagem para ser proporcional à largura e evitar distorções */
+        max-width: 100%;
+        /* Define a largura máxima da imagem para 100% do tamanho do contêiner */
+    }
   }
-
-  .img img {
-      width: 100%;
-      /* Define a largura da imagem para ocupar 100% da largura do contêiner */
-      height: auto;
-      /* Define a altura da imagem para ser proporcional à largura e evitar distorções */
-      max-width: 100%;
-      /* Define a largura máxima da imagem para 100% do tamanho do contêiner */
-  }
-}

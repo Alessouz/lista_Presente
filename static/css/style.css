@@ -89,19 +89,26 @@ body {
   margin-top: 20px;
 }
 
+.container h1 {
+  font-size: 30px;
+  margin: 0;
+  padding: 10px;
+  color: #9400d3;
+}
+
 .flor,
 .flor2 {
   max-width: 50px;
   height: auto;
   display: block;
   margin: 0 auto;
-  position: absolute;
+  position:absolute;
   bottom: 0;
 }
 
 .flor2 {
   left: 750px;
-  top: 290px;
+  top: 295px;
 }
 
 .flor {
@@ -110,6 +117,7 @@ body {
 }
 
 @media (max-width: 600px) {
+
   .flor{
 display: none;
   }
@@ -121,6 +129,11 @@ display: none;
   .flor2 {
       left: 50%;
       transform: translateX(-50%);
-      top: 300px;
+      top: 350px;
   }
+
+  .container h1 {
+    text-align: center;
+    color: #9400d3;
+}
 }
