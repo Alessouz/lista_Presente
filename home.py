@@ -134,8 +134,14 @@ novos_itens = [
 # Adicione os novos itens à lista existente
 lista_de_itens.extend(novos_itens)
 
+
 # Remover símbolos e espaços de cada item na lista de itens
 lista_de_itens_sem_simbolos = [re.sub(r'[^a-zA-Z0-9\s]', '', item) for item in lista_de_itens]
+
+# Decodificar o percent-encoded em cada item
+lista_de_itens_sem_simbolos_decodificados = [unquote(item) for item in lista_de_itens_sem_simbolos]
+
+print(lista_de_itens_sem_simbolos_decodificados)
 
 
 def enviar_email(mensagem, destinatario):
