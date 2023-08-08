@@ -143,6 +143,11 @@ lista_de_itens_sem_simbolos_decodificados = [unquote(item) for item in lista_de_
 
 print(lista_de_itens_sem_simbolos_decodificados)
 
+url_encoded = "JOGO%20DE%20LEN%C3%87OL%20COM%20EL%C3%81STICO%20(QUEEN)"
+decoded_text = unquote(url_encoded)
+
+print(decoded_text)
+
 
 def enviar_email(mensagem, destinatario):
     msg = email.message.Message()
