@@ -188,6 +188,12 @@ def pagina3():
 def item_details(item):
     return render_template('formulario.html', item=item)
 
+@app.route('/url_decode', methods=['GET'])
+def url_decode():
+    encoded_url = request.args.get('url')
+    decoded_url = unquote(encoded_url)
+    return decoded_url
+
 @app.route('/enviar_email', methods=['POST'])
 def enviar_formulario():
     if request.method == 'POST':
