@@ -135,14 +135,16 @@ novos_itens = [
 lista_de_itens.extend(novos_itens)
 
 
-# String codificada
 url_encoded = "MANTA%20DE%20CASAL%20+%20ALMOFADA.."
 
 # Decodificar a string
 decoded_text = unquote(url_encoded)
 
+# Remover símbolos e espaços da string decodificada
+cleaned_text = re.sub(r'[^a-zA-Z0-9\s]', '', decoded_text)
+
 # Imprimir o resultado
-print(decoded_text)
+print(cleaned_text)
 
 
 def enviar_email(mensagem, destinatario):
