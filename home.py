@@ -135,17 +135,13 @@ novos_itens = [
 lista_de_itens.extend(novos_itens)
 
 
-# Remover símbolos e espaços de cada item na lista de itens
-lista_de_itens_sem_simbolos = [re.sub(r'[^a-zA-Z0-9\s]', '', item) for item in lista_de_itens]
+# String codificada
+url_encoded = "MANTA%20DE%20CASAL%20+%20ALMOFADA.."
 
-# Decodificar o percent-encoded em cada item
-lista_de_itens_sem_simbolos_decodificados = [unquote(item) for item in lista_de_itens_sem_simbolos]
-
-print(lista_de_itens_sem_simbolos_decodificados)
-
-url_encoded = "JOGO%20DE%20LEN%C3%87OL%20COM%20EL%C3%81STICO%20(QUEEN)"
+# Decodificar a string
 decoded_text = unquote(url_encoded)
 
+# Imprimir o resultado
 print(decoded_text)
 
 
