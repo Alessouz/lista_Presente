@@ -4,12 +4,6 @@ import email.message
 from jinja2 import Environment, FileSystemLoader
 import json
 import os
-from urllib.parse import unquote
-import re
-
-# Carregar os templates usando o Jinja2
-env = Environment(loader=FileSystemLoader('.'))
-template = env.get_template('landing_page.html')
 
 # Função para carregar os dados do arquivo JSON
 def load_data():
@@ -138,17 +132,6 @@ novos_itens = [
 # Adicione os novos itens à lista existente
 lista_de_itens.extend(novos_itens)
 
-url_encoded = "MANTA%20DE%20CASAL%20+%20ALMOFADA.."
-
-# Decodificar a string
-decoded_text = unquote(url_encoded)
-
-# Remover símbolos e espaços da string decodificada
-cleaned_text = re.sub(r'[^a-zA-Z0-9\s]', '', decoded_text)
-
-# Imprimir o resultado
-print(cleaned_text)
-
 def enviar_email(mensagem, destinatario):
     msg = email.message.Message()
     msg['Subject'] = "Escolheram um item na lista do chá "
@@ -233,12 +216,6 @@ def enviar_formulario():
         # Passa a mensagem e o endereço de e-mail de destino como argumentos
         enviar_email(mensagem, email_destino)
         return render_template('sucesso.html')
-
-@app.route('/url_decode', methods=['GET'])
-def url_decode():
-    encoded_url = request.args.get('url')
-    decoded_url = unquote(encoded_url)
-    return decoded_url
 
 if __name__ == '__main__':
     app.run(debug=True)
