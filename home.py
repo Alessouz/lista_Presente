@@ -4,6 +4,7 @@ import email.message
 from jinja2 import Environment, FileSystemLoader
 import json
 import os
+from urllib.parse import unquote
 
 # Função para carregar os dados do arquivo JSON
 def load_data():
@@ -48,9 +49,9 @@ lista_de_itens = [
 'ESPELHO DE CORPO',
 'CORTINA BLECAUTE',
 'JOGO DE LENÇOL C/ ELÁSTICO (QUEEN)',
-'JOGO DE LENÇOL C/ ELÁSTICO (QUEEN)',
-'JOGO DE LENÇOL C/ ELÁSTICO (QUEEN)',
 'JOGO DE LENÇOL COM ELÁSTICO (QUEEN)',
+'JOGO DE LENÇOL COM ELÁSTICO (QUEEN).',
+'JOGO DE LENÇOL COM ELÁSTICO (QUEEN)..',
 'EDREDOM DE CASAL',
 'EDREDOM DE CASAL',
 'DREDOM DE CASAL',
@@ -187,12 +188,6 @@ def pagina3():
 @app.route('/item/<item>')
 def item_details(item):
     return render_template('formulario.html', item=item)
-
-@app.route('/url_decode', methods=['GET'])
-def url_decode():
-    encoded_url = request.args.get('url')
-    decoded_url = unquote(encoded_url)
-    return decoded_url
 
 @app.route('/enviar_email', methods=['POST'])
 def enviar_formulario():
