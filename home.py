@@ -7,10 +7,6 @@ import os
 from urllib.parse import unquote
 import re
 
-# Carregar os templates usando o Jinja2
-env = Environment(loader=FileSystemLoader('.'))
-template = env.get_template('landing_page.html')
-
 # Função para carregar os dados do arquivo JSON
 def load_data():
     try:
@@ -233,12 +229,6 @@ def enviar_formulario():
         # Passa a mensagem e o endereço de e-mail de destino como argumentos
         enviar_email(mensagem, email_destino)
         return render_template('sucesso.html')
-
-@app.route('/url_decode', methods=['GET'])
-def url_decode():
-    encoded_url = request.args.get('url')
-    decoded_url = unquote(encoded_url)
-    return decoded_url
 
 if __name__ == '__main__':
     app.run(debug=True)
