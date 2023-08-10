@@ -135,12 +135,6 @@ lista_de_itens.extend(novos_itens)
 # Removendo "%20" da lista
 lista_de_itens_sem_espacos = [item.replace('%20', ' ') for item in lista_de_itens]
 
-# Imprimindo a nova lista
-for item in lista_de_itens_sem_espacos:
-    print(item)
-
-
-
 def enviar_email(mensagem, destinatario):
     msg = email.message.Message()
     msg['Subject'] = "Escolheram um item na lista do chá "
