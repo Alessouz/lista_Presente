@@ -132,15 +132,6 @@ novos_itens = [
 # Adicione os novos itens à lista existente
 lista_de_itens.extend(novos_itens)
 
-# Sua lista de itens com "%20"
-lista_de_itens = [
-    'CAFETEIRA',
-    'SANDUICHEIRA',
-    'LIQUIDIFICADOR%20VERMELHO',
-    'BATEDEIRA%20PROFISSIONAL',
-    # ... outros itens ...
-]
-
 # Removendo "%20" da lista
 lista_de_itens_sem_espacos = [item.replace('%20', ' ') for item in lista_de_itens]
 
